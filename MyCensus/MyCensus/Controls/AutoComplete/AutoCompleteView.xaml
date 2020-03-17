@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:local="clr-namespace:MyCensus.Controls.AutoComplete;assembly=MyCensus"
+             x:Class="MyCensus.Controls.AutoComplete.AutoCompleteView">
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <StackLayout x:Name="SuggestedItemsContainerTop"
+                         IsVisible="false"
+                         BackgroundColor="Transparent"
+                         Margin="0,0,0,-1">
+
+            </StackLayout>
+            <!--<Entry x:Name="MainEntry"
+                   TextChanged="SearchText_TextChanged"
+                   Focused="SearchText_Focused"
+                   Unfocused="SearchText_Unfocused"
+                   TextColor="Silver" />-->
+
+            <input:BinEntry x:Name="MainEntry"
+                            Focused="SearchText_Focused"
+                            Unfocused="SearchText_Unfocused"
+                            VerticalOptions="Center"
+                            IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            BorderWidth="1"
+                            CornerRadius="0"
+                            UnderlineColor="#ffffff"
+                            BorderColor="#eeeeee"
+                            FontSize="12"
+                            IsCurvedCornersEnabled="False" />
+            <BoxView x:Name="EntryLine"
+                     HeightRequest="1"
+                     Color="Black"
+                     HorizontalOptions="Fill"
+                     IsVisible="false" />
+            <StackLayout x:Name="SuggestedItemsContainerBottom"
+                         IsVisible="false"
+                         BackgroundColor="#ffffff"
+                         Margin="5,-15,0,0">
+                <Frame x:Name="SuggestedItemsOuterContainer"
+                       BackgroundColor="White"
+                       IsVisible="false"
+                       HasShadow="false"
+                       OutlineColor="#ffffff"
+                       CornerRadius="0"
+                       Margin="0"
+                       Padding="5">
+                    <local:RepeaterView x:Name="SuggestedItemsRepeaterView"
+                                        ShowSeparator="true"
+                                        SeparatorColor="#eeeeee"
+                                        SeparatorHeight="1" Margin="0,5,0,5"/>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<naxam:BottomTabbedPage xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.BottomTabbedPage.Forms"
+                        xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:local="clr-namespace:MyCensus.Views"
+                        xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                        xmlns:ctrl="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+                        prism:ViewModelLocator.AutowireViewModel="True"
+                        BarBackgroundColor="#ffffff"
+                        BackgroundColor="#ffffff"
+                        x:Class="MyCensus.Views.MainPage">
+</naxam:BottomTabbedPage>
+
+<!--<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            prism:ViewModelLocator.AutowireViewModel="True"
+            xmlns:views="clr-namespace:MyCensus.Views"
+            x:Class="MyCensus.Views.MainPage">
+
+    <TabbedPage.Children>
+        <views:HomePage  Title="首页"
+                         Icon="fa-home" />
+        <views:SiteMap Title="位置"
+                       Icon="fa-map-marker" />
+        <views:MyTask Title="任务"
+                      Icon="fa-windows" />
+        <views:Networks Title="网点"
+                        Icon="fa-bullseye" />
+        <views:AboutPage Title="我"
+                         Icon="fa-user" />
+    </TabbedPage.Children>
+
+</TabbedPage>-->

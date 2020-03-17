@@ -1,0 +1,481 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controls\CustomMap\**" />
+    <EmbeddedResource Remove="Controls\CustomMap\**" />
+    <None Remove="Controls\CustomMap\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controls\AutoComplete\AutoCompleteView.xaml.cs" />
+    <Compile Remove="Controls\AutoComplete\IClueObject.cs" />
+    <Compile Remove="Controls\AutoComplete\RepeaterView.cs" />
+    <Compile Remove="Controls\BindablePicker\BindablePicker.cs" />
+    <Compile Remove="Converters\FromStationConverter.cs" />
+    <Compile Remove="Converters\MapColorConverter.cs" />
+    <Compile Remove="Converters\StationTypeConverter.cs" />
+    <Compile Remove="CustomEntry.cs" />
+    <Compile Remove="DataServices\Fake\FakeAuthenticationService.cs" />
+    <Compile Remove="DataServices\Fake\FakeEventsService.cs" />
+    <Compile Remove="DataServices\Fake\FakeProfileService.cs" />
+    <Compile Remove="DataServices\Fake\FakeRidesService.cs" />
+    <Compile Remove="NoBorderEntry.cs" />
+    <Compile Remove="Services\INavigationService.cs" />
+    <Compile Remove="Services\Interfaces\ICutImageHandle.cs" />
+    <Compile Remove="Services\iOSNavigationService.cs" />
+    <Compile Remove="ViewModels\BaseViewModel.cs" />
+    <Compile Remove="ViewModels\BookingViewModel.cs" />
+    <Compile Remove="ViewModels\CustomRideViewModel.cs" />
+    <Compile Remove="ViewModels\EventSummaryViewModel.cs" />
+    <Compile Remove="ViewModels\ItemDetailViewModel.cs" />
+    <Compile Remove="ViewModels\ItemsViewModel.cs" />
+    <Compile Remove="ViewModels\LoginViewModel.cs" />
+    <Compile Remove="ViewModels\MainViewModel.cs" />
+    <Compile Remove="ViewModels\MyRidesViewModel.cs" />
+    <Compile Remove="ViewModels\PrismTabbedPage1ViewModel.cs" />
+    <Compile Remove="ViewModels\RideSummaryViewModel.cs" />
+    <Compile Remove="ViewModels\SignUp\AccountViewModel.cs" />
+    <Compile Remove="ViewModels\SignUp\CredentialViewModel.cs" />
+    <Compile Remove="ViewModels\SignUp\GenreViewModel.cs" />
+    <Compile Remove="ViewModels\SignUp\SignUpViewModel.cs" />
+    <Compile Remove="ViewModels\SignUp\SubscriptionViewModel.cs" />
+    <Compile Remove="ViewModels\SignUp\UserViewModel.cs" />
+    <Compile Remove="ViewModels\UwpMyRidesViewModel.cs" />
+    <Compile Remove="Views\BarcodePage.xaml.cs" />
+    <Compile Remove="Views\BookingPage.xaml.cs" />
+    <Compile Remove="Views\CustomNavigationPage.xaml.cs" />
+    <Compile Remove="Views\CustomRidePage.xaml.cs" />
+    <Compile Remove="Views\EventSummaryPage.xaml.cs" />
+    <Compile Remove="Views\iOSMainPage.xaml.cs" />
+    <Compile Remove="Views\ItemDetailPage.xaml.cs" />
+    <Compile Remove="Views\ItemsPage.xaml.cs" />
+    <Compile Remove="Views\Machine.xaml.cs" />
+    <Compile Remove="Views\MyRidesPage.xaml.cs" />
+    <Compile Remove="Views\NewItemPage.xaml.cs" />
+    <Compile Remove="Views\PrismTabbedPage1.xaml.cs" />
+    <Compile Remove="Views\SignUp\AccountPage.xaml.cs" />
+    <Compile Remove="Views\SignUp\CredentialPage.xaml.cs" />
+    <Compile Remove="Views\SignUp\GenrePage.xaml.cs" />
+    <Compile Remove="Views\SignUp\SignUpPage.xaml.cs" />
+    <Compile Remove="Views\SignUp\SubscriptionPage.xaml.cs" />
+    <Compile Remove="Views\SignUp\UserPage.xaml.cs" />
+    <Compile Remove="Views\SignUp\UwpSignUpPage.xaml.cs" />
+    <Compile Remove="Views\UserPage_old.xaml.cs" />
+    <Compile Remove="Views\UwpMyRidesPage.xaml.cs" />
+    <Compile Remove="Views\UwpProfilePage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Controls\AutoComplete\AutoCompleteView.xaml" />
+    <EmbeddedResource Remove="Views\BarcodePage.xaml" />
+    <EmbeddedResource Remove="Views\BookingPage.xaml" />
+    <EmbeddedResource Remove="Views\CustomNavigationPage.xaml" />
+    <EmbeddedResource Remove="Views\CustomRidePage.xaml" />
+    <EmbeddedResource Remove="Views\EventSummaryPage.xaml" />
+    <EmbeddedResource Remove="Views\iOSMainPage.xaml" />
+    <EmbeddedResource Remove="Views\ItemDetailPage.xaml" />
+    <EmbeddedResource Remove="Views\ItemsPage.xaml" />
+    <EmbeddedResource Remove="Views\Machine.xaml" />
+    <EmbeddedResource Remove="Views\MyRidesPage.xaml" />
+    <EmbeddedResource Remove="Views\NewItemPage.xaml" />
+    <EmbeddedResource Remove="Views\PrismTabbedPage1.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\AccountPage.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\CredentialPage.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\GenrePage.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\SignUpPage.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\SubscriptionPage.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\UserPage.xaml" />
+    <EmbeddedResource Remove="Views\SignUp\UwpSignUpPage.xaml" />
+    <EmbeddedResource Remove="Views\UserPage_old.xaml" />
+    <EmbeddedResource Remove="Views\UwpMyRidesPage.xaml" />
+    <EmbeddedResource Remove="Views\UwpProfilePage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\cards.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\cards.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="CarouselView.FormsPlugin" Version="5.2.0" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.4" />
+    <PackageReference Include="Naxam.BottomTabbedPage" Version="0.2.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="PhotoBrowser.Forms" Version="0.1.3" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.168" />
+    <PackageReference Include="Splat" Version="5.0.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.4.118" />
+    <PackageReference Include="SQLitePCLRaw.bundle_green" Version="1.1.11" />
+    <PackageReference Include="SQLitePCLRaw.core" Version="1.1.11" />
+    <PackageReference Include="Unity" Version="5.8.7" />
+    <PackageReference Include="Unity.Abstractions" Version="3.3.1" />
+    <PackageReference Include="Unity.Container" Version="5.8.7" />
+    <PackageReference Include="Unity.Interception" Version="5.5.4" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugin.DeviceInfo" Version="4.0.0.13" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.3.840" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Xamarin.Forms.DataGrid" Version="3.1.0" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="2.2.2" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="3.1.0.697729" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\Cells\TraditionRideCell.xaml.cs">
+      <DependentUpon>TraditionRideCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\Cells\RestaurantRideCell.xaml.cs">
+      <DependentUpon>RestaurantRideCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\ShopImageControl.xaml.cs">
+      <DependentUpon>ShopImageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Restaurant_Card_Page1.xaml.cs">
+      <DependentUpon>Restaurant_Card_Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SiteMap.xaml.cs">
+      <DependentUpon>SiteMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RestaurantViewCard.xaml.cs">
+      <DependentUpon>RestaurantViewCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TraditionViewCard.xaml.cs">
+      <DependentUpon>TraditionViewCard.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\CustomPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\IconButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\DialogKit\Views\CheckBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\DialogKit\Views\ColorPickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\DialogKit\Views\InputView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\DialogKit\Views\RadioButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddProducts.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DialogKitTest.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MyTask.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Networks.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Restaurant_Card_Page1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Restaurant_Card_Page2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Restaurant_Card_Page3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SaoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ScanPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SearchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SiteMap.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TimeLinePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tradition_Card_Page1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tradition_Card_Page2.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tradition_Card_Page3.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TraditionViewCard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UpdatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewLocation.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\AutoComplete\" />
+    <Folder Include="Controls\AutoSuggestBox\" />
+    <Folder Include="Controls\BindablePicker\" />
+    <Folder Include="DataServices\Fake\" />
+    <Folder Include="ViewModels\SignUp\" />
+    <Folder Include="Views\SignUp\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FormsPlugin.Iconize">
+      <HintPath>C:\Users\Administrator\.nuget\packages\xam.formsplugin.iconize\1.0.10\lib\MonoAndroid10\FormsPlugin.Iconize.dll</HintPath>
+    </Reference>
+    <Reference Include="FormsPlugin.Iconize.Droid">
+      <HintPath>C:\Users\Administrator\.nuget\packages\xam.formsplugin.iconize\1.0.10\lib\MonoAndroid10\FormsPlugin.Iconize.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Iconize">
+      <HintPath>C:\Users\Administrator\.nuget\packages\xam.plugin.iconize\1.0.10\lib\MonoAndroid10\Plugin.Iconize.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Iconize.Droid">
+      <HintPath>C:\Users\Administrator\.nuget\packages\xam.plugin.iconize\1.0.10\lib\MonoAndroid10\Plugin.Iconize.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Iconize.FontAwesome.Droid">
+      <HintPath>C:\Users\Administrator\.nuget\packages\xam.plugin.iconize.fontawesome\1.0.10\lib\MonoAndroid10\Plugin.Iconize.FontAwesome.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Iconize.Ionicons.Droid">
+      <HintPath>C:\Users\Administrator\.nuget\packages\xam.plugin.iconize.ionicons\1.0.10\lib\MonoAndroid10\Plugin.Iconize.Ionicons.Droid.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\AutoComplete\AutoCompleteView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\CellInfoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Cells\CustomRideCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Cells\EventRideCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Cells\RestaurantRideCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Cells\SuggestedRideCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Cells\TraditionRideCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\CustomPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\DialogKit\Views\CheckBoxView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\DialogKit\Views\ColorPickerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\DialogKit\Views\InputView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\DialogKit\Views\RadioButtonView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\IconButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\LogoutButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Rides\RideStationInformationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\Rides\RideSummaryControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\ShopImageControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Controls\UserProfileImageControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\AboutPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\AddProducts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\BarcodePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\BookingPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\CustomNavigationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\CustomRidePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\DialogKitTest.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\EventSummaryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\iOSMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ItemDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ItemsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Machine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\MenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\MyRidesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\MyTask.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Networks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\NewItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\PrismTabbedPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ReportIncidentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\RestaurantViewCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Restaurant_Card_Page1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Restaurant_Card_Page2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Restaurant_Card_Page3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SaoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ScanPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SearchPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\AccountPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\CredentialPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\GenrePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\SignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\SubscriptionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\UserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SignUp\UwpSignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\SiteMap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\TimeLinePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\TraditionViewCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Tradition_Card_Page1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Tradition_Card_Page2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\Tradition_Card_Page3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\UpdatePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\UserMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\UserPage_old.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\UwpMyRidesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\UwpProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ViewLocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

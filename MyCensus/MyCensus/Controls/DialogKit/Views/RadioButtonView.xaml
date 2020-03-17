@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:MyCensus.Controls.DialogKit.Views"
+             x:Class="MyCensus.Controls.DialogKit.Views.RadioButtonView">
+  <ContentView.Content>
+        <StackLayout Padding="10" BackgroundColor="White" VerticalOptions="CenterAndExpand" Margin="25">
+            <Label FontAttributes="Bold" FontSize="Large" Text="{Binding Title}"/>
+            <Label FontSize="Large" Text="{Binding Message}"/>
+            <views:RadioButtonGroupView x:Name="slContent" Spacing="12">
+                <!--CONTENT WILL BE PLACED AT RUNTIME-->
+            </views:RadioButtonGroupView>
+
+            <StackLayout Margin="10" Orientation="Horizontal">
+                <Button Text="确认" Clicked="Confirm_Clicked" HorizontalOptions="FillAndExpand"/>
+                <Button Text="取消" Clicked="Cancel_Clicked" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

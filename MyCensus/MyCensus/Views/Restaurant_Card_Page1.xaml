@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyCensus"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:control="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:input="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="MyCensus.Views.Restaurant_Card_Page1"
+             Title="{Binding Title}"
+             BackgroundColor="#ffffff">
+    <ContentPage.Resources>
+        <!--<StyleSheet>
+            <![CDATA[
+            .inputentry {
+            border:1px #0094ff solid;
+            }
+            ]]>
+        </StyleSheet>-->
+        <ResourceDictionary>
+            <Style x:Key="inputStyle"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="TextColor"
+                        Value="Gray" />
+            </Style>
+            <Style x:Key="labelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout  VerticalOptions="FillAndExpand">
+
+        <StackLayout Padding="0,10,0,10"
+                     Margin="0"
+                     Spacing="0"
+                     VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="#2dc9d6">
+            <control:StepProgressBar x:Name="RestauranStepBar"
+                                     Margin="0,0,0,0"
+                                     StepCanTouch="false"
+                                     StepColor="#2399a5"
+                                     Steps="{Binding Steps}"
+                                     IsCircle="true"
+                                     StepSelected="{Binding Step}" />
+
+        </StackLayout>
+
+        <ScrollView Padding="0"
+                    Margin="0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Fill">
+            <StackLayout  VerticalOptions="Start"
+                          Spacing="0"
+                          Padding="0">
+
+                <!--<Button Grid.Row="0"
+                                Grid.Column="2"
+                                Clicked="TirarFoto" Text="拍照"></Button>-->
+                <StackLayout Margin="10,0,10,0"
+                             VerticalOptions="Start">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="门头拍照:"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               VerticalOptions="Center"
+                               Style="{StaticResource labelStyle}" />
+
+                        <control:ShopImageControl   x:Name="MinhaImagem"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    WidthRequest="40"
+                                                    HeightRequest="40"
+                                                    Margin="15,0,0,0"
+                                                    BorderColor="#7fadf7"
+                                                    ProfileImage="{Binding ThumbnailPhoto}"
+                                                    VerticalOptions="Center"
+                                                    HorizontalOptions="Start">
+                            <control:ShopImageControl.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShowViewerCmd}"
+                                                      CommandParameter="{Binding ThumbnailPhotoUrl}" />
+                            </control:ShopImageControl.GestureRecognizers>
+                        </control:ShopImageControl>
+
+                        <!--<Image Grid.Row="0"
+                               Grid.Column="1"
+                               HeightRequest="40"
+                               WidthRequest="40"
+                               x:Name="MinhaImagem"
+                               Margin="0"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               StyleClass="imageborder"
+                               Source="{Binding ThumbnailPhoto}">
+                        </Image>-->
+
+                        <iconize:IconImage Grid.Row="0"
+                                           Grid.Column="2"
+                                           HeightRequest="22"
+                                           HorizontalOptions="EndAndExpand"
+                                           Icon="fa-camera"
+                                           IconColor="#7fadf7"
+                                           WidthRequest="22">
+                            <iconize:IconImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CameraPhotoCmd}"
+                                                      CommandParameter="test" />
+                            </iconize:IconImage.GestureRecognizers>
+                        </iconize:IconImage>
+
+                    </Grid>
+                    <BoxView HeightRequest="1"
+                             Color="LightGray" />
+                </StackLayout>
+
+                <Grid Margin="10,0,10,0"
+                      VerticalOptions="Start">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label Text="终端编号:"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="0"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="EndPointNumber"
+                                    Text="{Binding BaseInfo.EndPointNumber}"
+                                    VerticalOptions="End"
+                                    IsSpellCheckEnabled="False"
+                                    IsTextPredictionEnabled="False"
+                                    IsEnabled="True"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding EndPointNumber_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+                    <Label Text="大区:"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="2"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="SaleRegion"
+                                    Text="{Binding BaseInfo.SaleRegion}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding SaleRegion_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="3"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+
+                    <Label Text="业务部:"
+                           Grid.Row="4"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="4"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="SalesDepartment"
+                                    Text="{Binding BaseInfo.SalesDepartment}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding SalesDepartment_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="5"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+                    <Label Text="城市:"
+                           Grid.Row="6"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="6"
+                                    Grid.Column="1"
+                                    x:Name="City"
+                                    Text="{Binding BaseInfo.City}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding City_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+                    <iconize:IconImage Grid.Row="6"
+                                       Grid.Column="2"
+                                       HeightRequest="25"
+                                       HorizontalOptions="EndAndExpand"
+                                       Icon="fa-map-marker"
+                                       IconColor="#7fadf7"
+                                       WidthRequest="25">
+                        <iconize:IconImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AutoPositionCmd}"
+                                                  CommandParameter="test" />
+                        </iconize:IconImage.GestureRecognizers>
+                    </iconize:IconImage>
+
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="7"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+                    <Label Text="区/县:"
+                           Grid.Row="8"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="8"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="DistrictOrCounty"
+                                    Text="{Binding BaseInfo.DistrictOrCounty}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding DistrictOrCounty_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="9"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+                    <Label Text="城区/乡镇:"
+                           Grid.Row="10"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="10"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="CityOrTown"
+                                    Text="{Binding BaseInfo.CityOrTown}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding CityOrTown_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="11"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+
+                    <Label Text="终端店名:"
+                           Grid.Row="12"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="12"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="EndPointStorsName"
+                                    Text="{Binding BaseInfo.EndPointStorsName}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding EndPointStorsName_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="13"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+                    <!--/////-->
+
+                    <Label Text="营业电话:"
+                           Grid.Row="14"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="14"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="EndPointTelphone"
+                                    Text="{Binding BaseInfo.EndPointTelphone}"
+                                    VerticalOptions="Center"
+                                    Keyboard="Telephone"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding EndPointTelphone_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="15"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+
+                    <!--/////-->
+                    <Label Text="终端地址:"
+                           Grid.Row="16"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="16"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2"
+                                    x:Name="EndPointAddress"
+                                    Text="{Binding BaseInfo.EndPointAddress}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="0"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="{Binding EndPointAddress_Tip}"
+                                    Style="{StaticResource inputStyle}" />
+
+                    <!--/////-->
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="17"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+                    <!--/////-->
+
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+
+        <Button Text="下一步"
+                x:Name="NextWF"
+                Command="{Binding NextWFCmd}"
+                BackgroundColor="#7fadf7"
+                TextColor="#ffffff"
+                VerticalOptions="EndAndExpand"
+                StyleClass="parmarybtn"
+                Margin="5"></Button>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--xmlns:dm="clr-namespace:dotMorten.Xamarin.Forms;assembly=dotMorten.Xamarin.Forms.AutoSuggestBox"-->
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:MyCensus"
+             xmlns:control="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:combox="clr-namespace:MyCensus.Controls.ComboBox;assembly=MyCensus"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:input="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:click="clr-namespace:MyCensus.Triggers;assembly=MyCensus"
+             xmlns:autocomplete="clr-namespace:MyCensus.Controls.AutoComplete;assembly=MyCensus"
+             x:Class="MyCensus.Views.AddProducts"
+             Title="{Binding Title}"
+             BackgroundColor="#ffffff">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="inputStyle"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+            <Style x:Key="labelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="保存"
+                     Icon="fa-save"
+                     Command="{Binding SaveProductCmd}">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>-->
+
+    <StackLayout  VerticalOptions="FillAndExpand">
+
+        <ScrollView Padding="0"
+                    Margin="0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Fill">
+            <StackLayout  VerticalOptions="Start"
+                          Spacing="0"
+                          Padding="0">
+
+                <Grid Margin="10,0,10,0"
+                      VerticalOptions="Start">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="35" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--/////-->
+                    <Label Text="品牌:"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <combox:ComboBox  Grid.Row="0"
+                                      Grid.Column="1"
+                                      Grid.ColumnSpan="2"
+                                      x:Name="Brand"
+                                      TextColor="#757575"
+                                      FontSize="12"
+                                      BackgroundColor="Transparent"
+                                      VerticalOptions="Center"
+                                      SelectedIndex="{Binding BrandSelectedIndex}"
+                                      SelectedItem="{Binding BrandSelectedItem}"
+                                      ItemsSource="{Binding Path=Brand, Mode=OneWay}" />
+
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+
+                    <!--/////-->
+                    <Label Text="产品名称:"
+                           Grid.Row="2"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+
+                    <input:BinEntry x:Name="ProductName"
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Placeholder="产品名称"
+                                    Text="{Binding ProductName.Value, Mode=TwoWay}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="1"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Style="{StaticResource inputStyle}" />
+
+
+
+                    <!--<StackLayout   Grid.Row="2"
+                                   Grid.Column="1" Orientation="Vertical" VerticalOptions="Start">
+                        <autocomplete:AutoCompleteView OptionalSuggestionsPanelContainer="{x:Reference Name=SuggestionsContainer}"
+                                                       OnSuggestionOpen="Handle_OnSuggestionOpen"
+                                                       Margin="0"
+                                                       OpenOnFocus="true"
+                                                       x:Name="ProductName"
+                                                       SearchMember="ProductName"
+                                                       ShowSeparator="True"
+                                                       SelectedItem="{Binding SelectedItem}"
+                                                       MaxResults="10"
+                                                       FontSize="12"
+                                                       EmptyText="无匹配信息！"
+                                                       Placeholder="产品名称"
+                                                       PlaceholderTextColor="#24a8b4"
+                                                       SelectedItemCommand="{Binding SelectedItemCommand}"
+                                                       ItemsSource="{Binding Items}">
+                            <autocomplete:AutoCompleteView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Label Text="{Binding ProductName}"
+                                               TextColor="#24a8b4"
+                                               FontAttributes="None" />
+                                    </ViewCell>
+                                </DataTemplate>
+                            </autocomplete:AutoCompleteView.ItemTemplate>
+                        </autocomplete:AutoCompleteView>
+                        <StackLayout x:Name="SuggestionsContainer"
+                                     BackgroundColor="#ffffff"
+                                     Margin="0"
+                                     Padding="0">
+                        </StackLayout>
+                    </StackLayout>-->
+
+                    <!--qrcode-->
+                    
+                    <!--<iconize:IconImage Grid.Row="2"
+                                       Grid.Column="2"
+                                       HeightRequest="25"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="EndAndExpand"
+                                       Icon="fa-qrcode"
+                                       IconColor="#7fadf7"
+                                       WidthRequest="25">
+                        <iconize:IconImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ScanCodeCommand}"
+                                                  CommandParameter="test" />
+                        </iconize:IconImage.GestureRecognizers>
+                    </iconize:IconImage>-->
+
+                    <!--search-->
+                    <iconize:IconImage Grid.Row="2"
+                                       Grid.Column="2"
+                                       HeightRequest="25"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="EndAndExpand"
+                                       Icon="fa-search"
+                                       IconColor="#7fadf7"
+                                       WidthRequest="25">
+                        <iconize:IconImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SearchCommand}"
+                                                  CommandParameter="test" />
+                        </iconize:IconImage.GestureRecognizers>
+                    </iconize:IconImage>
+
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="3"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+                    <!--/////-->
+                    <Label Text="包装形式:"
+                           Grid.Row="4"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <combox:ComboBox Grid.Row="4"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="2"
+                                     x:Name="PackingForm"
+                                     TextColor="#757575"
+                                     FontSize="12"
+                                     BackgroundColor="Transparent"
+                                     VerticalOptions="Center"
+                                     SelectedIndex="{Binding PackingFormSelectedIndex}"
+                                     ItemsSource="{Binding Path=PackingForm, Mode=OneWay}"
+                                     SelectedItem="{Binding PackingFormSelectedItem}"
+                                     />
+
+            
+
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="5"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+                    <!--/////-->
+                    <Label Text="规格:"
+                           Grid.Row="6"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <combox:ComboBox Grid.Row="6"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="2"
+                                     x:Name="Specification"
+                                     TextColor="#757575"
+                                     FontSize="12"
+                                     BackgroundColor="Transparent"
+                                     VerticalOptions="Center"
+                                     SelectedIndex="{Binding SpecificationSelectedIndex}"
+                                     ItemsSource="{Binding Path=Specification, Mode=OneWay}"
+                                     SelectedItem="{Binding SpecificationSelectedItem}" />
+                    
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="7"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+                    <!--/////-->
+                    <Label Text="年销量:"
+                           Grid.Row="8"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry Grid.Row="8"
+                                    Grid.Column="1"
+                                    x:Name="AnnualSales"
+                                    Placeholder="各品牌档次年销量（箱/年）"
+                                    Text="{Binding AnnualSales.Value, Mode=TwoWay}"
+                                    VerticalOptions="Center"
+                                    BorderWidth="1"
+                                    CornerRadius="0"
+                                    UnderlineColor="#ffffff"
+                                    BorderColor="#ffffff"
+                                    IsCurvedCornersEnabled="False"
+                                    Style="{StaticResource inputStyle}" />
+                    <iconize:IconImage Grid.Row="8"
+                                       Grid.Column="2"
+                                       HeightRequest="25"
+                                       HorizontalOptions="EndAndExpand"
+                                       Icon="fa-edit"
+                                       IconColor="#7fadf7"
+                                       WidthRequest="25">
+                        <iconize:IconImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ConvertAnnualSalesCommand}"
+                                                  CommandParameter="test" />
+                        </iconize:IconImage.GestureRecognizers>
+                    </iconize:IconImage>
+
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="9"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+                    <!--/////-->
+                    <Label Text="产品供货商:"
+                           Grid.Row="10"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <input:BinEntry    Grid.Row="10"
+                                       Grid.Column="1"
+                                       Grid.ColumnSpan="2"
+                                       x:Name="ProductProvider"
+                                       Placeholder="产品供货商"
+                                       IsSpellCheckEnabled="False"
+                                       IsTextPredictionEnabled="False"
+                                       Text="{Binding ProductProvider.Value, Mode=TwoWay}"
+                                       VerticalOptions="Center"
+                                       BorderWidth="1"
+                                       CornerRadius="0"
+                                       UnderlineColor="#ffffff"
+                                       BorderColor="#ffffff"
+                                       IsCurvedCornersEnabled="False"
+                                       Style="{StaticResource inputStyle}" />
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="11"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+                    <!--/////-->
+                    <Label Text="渠道属性:"
+                           Grid.Row="12"
+                           Grid.Column="0"
+                           VerticalOptions="Center"
+                           Style="{StaticResource labelStyle}" />
+                    <combox:ComboBox Grid.Row="12"
+                                     Grid.Column="1"
+                                     Grid.ColumnSpan="2"
+                                     x:Name="ChannelAttributes"
+                                     TextColor="#757575"
+                                     FontSize="12"
+                                     BackgroundColor="Transparent"
+                                     VerticalOptions="Center"
+                                     SelectedIndex="{Binding ChannelAttributesSelectedIndex}"
+                                     ItemsSource="{Binding Path=ChannelAttributes, Mode=OneWay}"
+                                     SelectedItem="{Binding ChannelAttributesSelectedItem}"
+                                     />
+
+                    <!--/////-->
+
+                    <BoxView  HeightRequest="1"
+                              Grid.Row="13"
+                              Grid.ColumnSpan="3"
+                              Margin="0"
+                              Color="#dddddd"></BoxView>
+
+
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+
+    </StackLayout>
+</ContentPage>

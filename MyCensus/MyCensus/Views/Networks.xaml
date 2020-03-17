@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:MyCensus.Views.Converters;assembly=MyCensus"
+             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:behaviors="clr-namespace:MyCensus.Behaviors;assembly=MyCensus"
+             xmlns:animations="clr-namespace:MyCensus.Animations;assembly=MyCensus"
+             xmlns:templates="clr-namespace:MyCensus.TemplateSelectors;assembly=MyCensus"
+             xmlns:effects="clr-namespace:MyCensus.Effects;assembly=MyCensus"
+             xmlns:triggers="clr-namespace:MyCensus.Triggers;assembly=MyCensus"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MyCensus.Views.Networks">
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem x:Name="GotoHomeToolbarItem"
+                     Text="首页"
+                     Command="{Binding GotoHomeCmd}">
+        </ToolbarItem>-->
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Effects>
+        <effects:ContentPageTitleFontEffect />
+    </ContentPage.Effects>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <templates:MyRidesDataTemplateSelector x:Key="MyRidesDataTemplateSelector" />
+
+            <animations:StoryBoard x:Key="MyRydesAnimation"
+                                   Target="{x:Reference Items}">
+                <animations:FadeToAnimation Opacity="1"
+                                            Duration="1000" />
+            </animations:StoryBoard>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation Animation="{StaticResource MyRydesAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <Grid BackgroundColor="{StaticResource BackgroundGrayColor}"
+          Padding="0"
+          Margin="0">
+        <ListView x:Name="Items"
+                  CachingStrategy="RecycleElement"
+                  ItemsSource="{Binding MyRides, Mode=OneWay}"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  ItemTemplate="{StaticResource MyRidesDataTemplateSelector}"
+                  behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding ItemSelectedCommand}"
+                  IsPullToRefreshEnabled="True"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                  Opacity="0">
+            <ListView.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                            Android="5"
+                            WinPhone="5" />
+            </ListView.Margin>
+        </ListView>
+    </Grid>
+</ContentPage>

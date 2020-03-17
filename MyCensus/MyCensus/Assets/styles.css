@@ -1,0 +1,61 @@
+﻿.parmarybtn {
+    border-color: #9acd32;
+    border-width: .1;
+    border-radius: 0;
+    background-color: #7fadf7;
+}
+
+.defaultbtn {
+    border-color: #ffb636;
+    border-width: .1;
+    border-radius: 0;
+    background-color: #ffb636;
+}
+
+.indexlogo {
+    width:100;
+}
+
+.parmarybtn-sm {
+    margin:5;
+    height:40;
+    color:#ffffff;
+    border-width: 0;
+    border-radius: 0;
+    background-color: #7fadf7;
+
+}
+
+.dengerbtn {
+    border-color: #ff0000;
+    border-width: .1;
+    border-radius: 0;
+    color: #ffffff;
+    margin: 10;
+    background-color: #ff0000;
+}
+
+.iconviewer {
+    background-color: #ffffff;
+}
+
+.ProfileTagLabelStyle {
+    font-size: 12;
+    color: #24a8b4;
+}
+
+.steperbutton {
+    border-radius: 20;
+    background-color:#ff0000;
+}
+
+.imageborder {
+    border-color: #7fadf7;
+    border-width: .1;
+}
+
+.AutoSuggestBox {
+    font-size: 12px;
+    border-color: #ffffff;
+    border-width: .1;
+}

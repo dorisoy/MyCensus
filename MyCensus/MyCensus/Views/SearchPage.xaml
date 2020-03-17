@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:custom="clr-namespace:MyCensus.PlacesSearchBar;assembly=MyCensus"
+             x:Class="MyCensus.Views.SearchPage"
+             Title="搜索商品信息">
+    <StackLayout VerticalOptions="Start">
+        <custom:PlacesBar x:Name="search_bar"
+                          Placeholder="搜索商品"
+                          HeightRequest="30"
+                          VerticalOptions="Start" Margin="0,10,0,0" />
+        <AbsoluteLayout VerticalOptions="Fill">
+            <ActivityIndicator  x:Name="spinner"
+                                Color="{StaticResource BlueColor}"
+                                IsRunning="false"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                AbsoluteLayout.LayoutBounds="0.5, 0.5, 25, 25"
+                                AbsoluteLayout.LayoutFlags="All">
+                <ActivityIndicator.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double"
+                                iOS="100"
+                                Android="100"
+                                WinPhone="400" />
+                </ActivityIndicator.WidthRequest>
+            </ActivityIndicator>
+            <ListView x:Name="results_list"
+                     VerticalOptions="FillAndExpand"
+                      IsVisible="false"
+                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                      AbsoluteLayout.LayoutFlags="SizeProportional">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<TextCell Text="{Binding ProductName}"
+                                  Detail="{Binding Detalls}" />-->
+                        <ViewCell>
+                            <Grid ColumnSpacing="0"
+                                  RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="20,0"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource ClassNameLabel}"
+                                       Text="{Binding ProductName}" />
+                                <Label Grid.Row="0"
+                                       Grid.Column="1"
+                                       Margin="20,0"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource ClassInstructorLabel}"
+                                       Text="{Binding Detalls}" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </AbsoluteLayout>
+    </StackLayout>
+
+</ContentPage>

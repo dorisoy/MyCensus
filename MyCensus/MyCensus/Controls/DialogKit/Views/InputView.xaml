@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:animations="clr-namespace:MyCensus.Animations;assembly=MyCensus"
+                 xmlns:input="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+                 xmlns:views="clr-namespace:MyCensus.Controls.DialogKit.Views"
+                 x:Class="MyCensus.Controls.DialogKit.Views.InputView">
+    <pages:PopupPage.Animation>
+        <animations:UserAnimation />
+    </pages:PopupPage.Animation>
+    <StackLayout VerticalOptions="Center"
+                 HorizontalOptions="Center">
+        <Frame BackgroundColor="White">
+            <StackLayout Spacing="10">
+
+                <Label FontAttributes="Bold"
+                       FontSize="14"
+                       Text="{Binding Title}" />
+
+                <StackLayout Padding="0">
+                    <!--<Entry x:Name="txtInput"
+                   Keyboard="{Binding Keyboard}" BackgroundColor="#eeeeee" />-->
+                    <views:RadioButtonGroupView x:Name="slContent"
+                                                Spacing="12">
+                        <!--CONTENT WILL BE PLACED AT RUNTIME-->
+                    </views:RadioButtonGroupView>
+                    <input:BinEntry x:Name="txtInput"
+                                    Keyboard="{Binding Keyboard}"
+                                    BorderWidth="1"
+                                    CornerRadius="1"
+                                    FontSize="12"
+                                    IconPadding="False"
+                                    UnderlineColor="#7fadf7"
+                                    BorderColor="#7fadf7"
+                                    IsCurvedCornersEnabled="False"
+                                    Placeholder="请输入销量值" />
+                    <Label x:Name="txtInput_valid"
+                           IsVisible="{Binding Isvalid}"
+                           Text="{Binding ValidMessage}"
+                           TextColor="Red"
+                           FontSize="12"></Label>
+                </StackLayout>
+
+                <StackLayout Margin="0"
+                             Orientation="Horizontal">
+                    <Button Text="确认"
+                            FontSize="12"
+                            Clicked="Confirm_Clicked"
+                            BackgroundColor="#7fadf7"
+                            TextColor="#ffffff"
+                            CornerRadius="0"
+                            HeightRequest="35"
+                            HorizontalOptions="FillAndExpand" />
+                    <Button Text="取消"
+                            FontSize="12"
+                            Clicked="Cancel_Clicked"
+                            BackgroundColor="#7fadf7"
+                            TextColor="#ffffff"
+                            CornerRadius="0"
+                            HeightRequest="35"
+                            HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                
+                <!--<Label HorizontalOptions="Center"
+                       Text="User Animation"
+                       FontSize="16"></Label>
+                <Button Text="Close"
+                        Clicked="OnClose"></Button>-->
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>

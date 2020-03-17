@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCensus.Views.ViewLocation"
+             xmlns:maps="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:styling="clr-namespace:MyCensus.Models"
+             xmlns:controls="clr-namespace:MyCensus.Controls"
+             xmlns:converters="clr-namespace:MyCensus.Converters"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:animations="clr-namespace:MyCensus.Animations;assembly=MyCensus"
+             xmlns:triggers="clr-namespace:MyCensus.Triggers;assembly=MyCensus"
+             xmlns:effects="clr-namespace:MyCensus.Effects;assembly=MyCensus"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <animations:FadeInAnimation x:Key="MapAnimation"
+                                        Target="{x:Reference map}"
+                                        Direction="Up"
+                                        Duration="1000" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Triggers>
+        <EventTrigger Event="OnAppearing">
+            <triggers:BeginAnimation Animation="{StaticResource MapAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ContentPage.Effects>
+        <effects:ContentPageTitleFontEffect />
+    </ContentPage.Effects>
+
+    <AbsoluteLayout>
+        <!-- MAP -->
+        <!--baidu地图插件-->
+        <maps:MyBaiduMaps x:Name="map"
+                          AbsoluteLayout.LayoutFlags="All"
+                          AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" />
+
+    </AbsoluteLayout>
+</ContentPage>

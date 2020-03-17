@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:behaviors="clr-namespace:MyCensus.Behaviors;assembly=MyCensus"
+             xmlns:converters="clr-namespace:MyCensus.Converters"
+             x:Class="MyCensus.Views.TimeLinePage"
+             Title="{Binding Title}" Padding="0,20,0,0">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NotBooleanConverter x:Key="NotBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ListView x:Name="timelineListView"
+              CachingStrategy="RecycleElement"
+              ItemsSource="{Binding Classes, Mode=OneWay}"
+              RowHeight="75"
+              Margin="0,0,0,0"
+              SelectionMode="None"
+              SeparatorVisibility="None"
+              RefreshCommand="{Binding RefreshCommand}">
+        
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid ColumnSpacing="0"
+                          RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Label HorizontalOptions="Center"
+                               Style="{StaticResource ClassTimeLabel}"
+                               Text="{Binding UpdateTime, StringFormat='{0:H:mm}'}" />
+
+                        <Label Grid.Column="2"
+                               Margin="20,0"
+                               Style="{StaticResource ClassNameLabel}"
+                               Text="{Binding EndPointStorsName}" />
+
+                        <Label Grid.Row="1"
+                               Grid.Column="2"
+                               Margin="20,0"
+                               Style="{StaticResource ClassInstructorLabel}"
+                               Text="{Binding EndPointAddress}" />
+
+                        <BoxView Grid.RowSpan="2"
+                                 Grid.Column="1"
+                                 BackgroundColor="{StaticResource TimelineColor}"
+                                 HorizontalOptions="Center"
+                                 IsVisible="{Binding IsLast, Converter={converters:NotBooleanConverter}}"
+                                 VerticalOptions="Fill"
+                                 WidthRequest="1" />
+             
+                        <Image Grid.Column="1"
+                               Source="Bullet.png" />
+
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

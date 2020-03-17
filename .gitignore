@@ -1,0 +1,15 @@
+MyCensus/MyCensus.Android/obj/
+MyCensus/MyCensus/obj/
+TencentMapBinding/obj/
+TencentMapSDK_Android_2D_v1.2.8.1/
+TencentLocationSdk_v6.2.5.3/
+TencentLocationBinding/obj/
+MyCensus/MyCensus/bin/
+BaiduMapBinding/obj/
+MyCensus/MyCensus.iOS/obj/
+.vs/
+TencentMapBinding/Jars/
+MyCensus/MyCensus.Android/bin/
+MyCensus.AutoSuggestBox/obj/
+CustomEntry/obj/
+CustomEntry/bin/

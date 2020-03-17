@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:eff="clr-namespace:MyCensus.Effects;assembly=MyCensus"
+             xmlns:ctrl="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:animations="clr-namespace:MyCensus.Animations;assembly=MyCensus"
+             xmlns:triggers="clr-namespace:MyCensus.Triggers;assembly=MyCensus"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="MyCensus.Views.RestaurantViewCard"
+             xmlns:local1="clr-namespace:MyCensus.Controls"
+             Title="{Binding Title}">
+
+    <!--BinSegmentedControl-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="inputStyle"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+            <Style x:Key="labelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+
+            <Style x:Key="ProfileTitleLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource BlueColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LittleSize}" />
+            </Style>
+
+            <Style x:Key="TempLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource HugeSize}" />
+            </Style>
+
+            <Style x:Key="ProfileItemLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource GrayColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MediumSize}" />
+            </Style>
+            <animations:StoryBoard x:Key="ProfileImageAnimation"
+                                   Target="{x:Reference ProfileImage}">
+                <animations:FadeInAnimation Direction="Up"
+                                            Duration="500" />
+            </animations:StoryBoard>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Effects>
+        <eff:ContentPageTitleFontEffect />
+    </ContentPage.Effects>
+    <ContentPage.Triggers>
+        <EventTrigger Event="Appearing">
+            <triggers:BeginAnimation Animation="{StaticResource ProfileImageAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+
+
+    <StackLayout HorizontalOptions="FillAndExpand">
+
+        <ScrollView Padding="0"
+                    Margin="0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Start">
+
+            <StackLayout  VerticalOptions="Start"
+                          Spacing="0"
+                          Padding="0">
+
+                <Grid x:Name="ProfileImage"
+                      HeightRequest="100">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100" />
+                    </Grid.RowDefinitions>
+                    <!--头部图片-->
+                    <ffimageloading:CachedImage Aspect="AspectFill"
+                                                Grid.Row="0"
+                                                LoadingDelay="10"
+                                                Source="{Binding ThumbnailPhotoUrl}">
+                    </ffimageloading:CachedImage>
+                    <!--店名-->
+                    <StackLayout x:Name="infoPanel"
+                                 Opacity="1"
+                                 AnchorX="0"
+                                 AnchorY="1"
+                                 Margin="20,20,5,5"
+                                 VerticalOptions="Start">
+
+
+                        <Label Text="{Binding Restaurant.BaseInfo.EndPointStorsName}"
+                               FontSize="25"
+                               TextColor="#7fadf7"
+                               FontAttributes="Bold" />
+
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="0">
+                            <iconize:IconImage  HeightRequest="14"
+                                                Icon="fa-home"
+                                                IconColor="#7fadf7"
+                                                WidthRequest="14">
+                            </iconize:IconImage>
+                            <Label Text="{Binding Restaurant.BaseInfo.EndPointAddress}"
+                                   FontSize="14"
+                                   Margin="5,0,0,0"
+                                   TextColor="#7fadf7" />
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal"
+                                     Spacing="0">
+                            <iconize:IconImage  HeightRequest="14"
+                                                Icon="fa-phone"
+                                                IconColor="#7fadf7"
+                                                WidthRequest="14">
+                            </iconize:IconImage>
+                            <Label  Text="{Binding Restaurant.BaseInfo.EndPointTelphone}"
+                                    FontAttributes="Bold"
+                                    FontSize="14"
+                                    Margin="5,0,0,0"
+                                    TextColor="#7fadf7" />
+                        </StackLayout>
+
+                    </StackLayout>
+                </Grid>
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Margin="0,50,0,0"
+                             BackgroundColor="White"
+                             Padding="10,0,10,0">
+                    <Grid Margin="0"
+                          Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0"
+                                     Grid.Column="0"
+                                     VerticalOptions="Center">
+                            <BoxView HeightRequest="1"
+                                     Margin="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="#7fadf7">
+                            </BoxView>
+                        </StackLayout>
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="基本信息"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               WidthRequest="60"
+                               TextColor="#7fadf7"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center" />
+                        <StackLayout Grid.Row="0"
+                                     Grid.Column="2"
+                                     VerticalOptions="Center">
+                            <BoxView HeightRequest="1"
+                                     Margin="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="#7fadf7">
+                            </BoxView>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout  VerticalOptions="Fill"
+                              Margin="0,0,0,0"
+                              Padding="10,0,10,0"
+                              BackgroundColor="White">
+
+                    <Grid Margin="0"
+                          Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--/////-->
+                        <!--/////-->
+                        <Label Text="终端编号:"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Text="{Binding Restaurant.BaseInfo.EndPointNumber}"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Style="{StaticResource labelStyle}" />
+                        <!--/////-->
+                        <Label Text="大区:"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BaseInfo.SaleRegion}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="业务部:"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BaseInfo.SalesDepartment}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="城市:"
+                               Grid.Row="3"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="3"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BaseInfo.City}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="终端店名:"
+                               Grid.Row="4"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="4"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BaseInfo.EndPointStorsName}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="营业电话:"
+                               Grid.Row="5"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="5"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BaseInfo.EndPointTelphone}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="终端地址:"
+                               Grid.Row="6"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="6"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BaseInfo.EndPointAddress}"
+                               Style="{StaticResource inputStyle}" />
+                    </Grid>
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10,0,10,0"
+                             Margin="0,0,0,0">
+                    <Grid Margin="0"
+                          Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0"
+                                     Grid.Column="0"
+                                     VerticalOptions="Center">
+                            <BoxView HeightRequest="1"
+                                     Margin="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="#7fadf7">
+                            </BoxView>
+                        </StackLayout>
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="经营信息"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               WidthRequest="60"
+                               TextColor="#7fadf7"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center" />
+                        <StackLayout Grid.Row="0"
+                                     Grid.Column="2"
+                                     VerticalOptions="Center">
+                            <BoxView HeightRequest="1"
+                                     Margin="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="#7fadf7">
+                            </BoxView>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout  VerticalOptions="Fill"
+                              Margin="0,0,0,0"
+                              Padding="10,0,10,0">
+                    <Grid Margin="0"
+                          Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--/////-->
+                        <Label Text="终端类型:"
+                               Grid.Row="0"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Text="{Binding Restaurant.BusinessInfo.EndPointType}"
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Style="{StaticResource labelStyle}" />
+                        <!--/////-->
+                        <Label Text="是否连锁:"
+                               Grid.Row="1"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.IsChain,Converter={StaticResource BoolToStringConverter}}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="是否协议店:"
+                               Grid.Row="2"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.IsAgreement,Converter={StaticResource BoolToStringConverter}}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="包厢数:"
+                               Grid.Row="3"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="3"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.PrivateRoomes}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="桌台数:"
+                               Grid.Row="4"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="4"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.TableNumber}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="座位数:"
+                               Grid.Row="5"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="5"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.Seats}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="经营特色:"
+                               Grid.Row="6"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="6"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.Characteristics}"
+                               Style="{StaticResource inputStyle}" />
+
+                        <!--/////-->
+                        <Label Text="合作方式:"
+                               Grid.Row="7"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="7"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.ModeOfCooperation}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="终端状态:"
+                               Grid.Row="8"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="8"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.EndPointStates}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="负责人姓名:"
+                               Grid.Row="9"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="9"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.ChargePerson}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="负责人电话:"
+                               Grid.Row="10"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="10"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.Telphone}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="关键联系人:"
+                               Grid.Row="11"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="11"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.TopContacts}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="关键人电话:"
+                               Grid.Row="12"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="12"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.TopContactPhone}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="关键人职位:"
+                               Grid.Row="13"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="13"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.Position}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="本品展柜数:"
+                               Grid.Row="14"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="14"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.ShowcaseNum}"
+                               Style="{StaticResource inputStyle}" />
+                        <!--/////-->
+                        <Label Text="人均消费:"
+                               Grid.Row="15"
+                               Grid.Column="0"
+                               Style="{StaticResource labelStyle}" />
+                        <Label Grid.Row="15"
+                               Grid.Column="1"
+                               Text="{Binding Restaurant.BusinessInfo.PerConsumptions}"
+                               Style="{StaticResource inputStyle}" />
+                    </Grid>
+
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             Padding="10,0,10,0"
+                             Margin="0,0,0,0">
+                    <Grid Margin="0"
+                          Padding="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Row="0"
+                                     Grid.Column="0"
+                                     VerticalOptions="Center">
+                            <BoxView HeightRequest="1"
+                                     Margin="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="#7fadf7">
+                            </BoxView>
+                        </StackLayout>
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="销售信息"
+                               FontAttributes="Bold"
+                               FontSize="14"
+                               WidthRequest="60"
+                               TextColor="#7fadf7"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center" />
+                        <StackLayout Grid.Row="0"
+                                     Grid.Column="2"
+                                     VerticalOptions="Center">
+                            <BoxView HeightRequest="1"
+                                     Margin="0"
+                                     VerticalOptions="Center"
+                                     HorizontalOptions="FillAndExpand"
+                                     BackgroundColor="#7fadf7">
+                            </BoxView>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+
+                <StackLayout  VerticalOptions="Fill"
+                              Margin="0,0,0,0"
+                              Padding="10,0,10,0">
+
+                    <ListView x:Name="ProductListView"
+                              CachingStrategy="RecycleElement"
+                              ItemsSource="{Binding Restaurant.SalesProducts}"
+                              RowHeight="30"
+                              Margin="0,0,0,0">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="0"
+                                          Padding="0"
+                                          VerticalOptions="Center">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="15" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <!--/////-->
+                                        <iconize:IconImage  Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            HeightRequest="12"
+                                                            Icon="fa-angle-right"
+                                                            IconColor="#7fadf7"
+                                                            WidthRequest="12">
+                                        </iconize:IconImage>
+                                        <Label Text="{Binding Brand}"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Style="{StaticResource labelStyle}"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding ProductName}"
+                                               Grid.Row="0"
+                                               Grid.Column="2"
+                                               Style="{StaticResource labelStyle}"
+                                               VerticalOptions="Center" />
+                                        <Label Text="{Binding AnnualSales}"
+                                               Grid.Row="0"
+                                               Grid.Column="3"
+                                               Style="{StaticResource labelStyle}"
+                                               VerticalOptions="Center" />
+                                    </Grid>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+            </StackLayout>
+
+        </ScrollView>
+        <!-- Start button -->
+        <Button Text="查看定位"
+                x:Name="NextWF"
+                Command="{Binding ViewLocationCmd}"
+                BackgroundColor="#7fadf7"
+                TextColor="#ffffff"
+                VerticalOptions="EndAndExpand"
+                StyleClass="parmarybtn"
+                Margin="5"></Button>
+    </StackLayout>
+
+
+</ContentPage>

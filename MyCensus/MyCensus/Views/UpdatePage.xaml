@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MyCensus.Views.UpdatePage" Title="系统升级">
+    <StackLayout Padding="10">
+        <Label Text="{Binding Version}"></Label>
+        <Button Text="{Binding Updatetxt}"
+                IsEnabled="{Binding isNew}"
+                Command="{Binding GetNewVersion}"
+                BackgroundColor="Red"
+                TextColor="White"></Button>
+    </StackLayout>
+</ContentPage>

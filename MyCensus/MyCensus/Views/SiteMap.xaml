@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCensus.Views.SiteMap"
+             xmlns:maps="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:styling="clr-namespace:MyCensus.Models"
+             xmlns:controls="clr-namespace:MyCensus.Controls"
+             xmlns:converters="clr-namespace:MyCensus.Converters"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:animations="clr-namespace:MyCensus.Animations;assembly=MyCensus"
+             xmlns:triggers="clr-namespace:MyCensus.Triggers;assembly=MyCensus"
+             xmlns:effects="clr-namespace:MyCensus.Effects;assembly=MyCensus"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <animations:FadeInAnimation x:Key="MapAnimation"
+                                        Target="{x:Reference map}"
+                                        Direction="Up"
+                                        Duration="1000" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Triggers>
+        <EventTrigger Event="OnAppearing">
+            <triggers:BeginAnimation Animation="{StaticResource MapAnimation}" />
+        </EventTrigger>
+    </ContentPage.Triggers>
+    <ContentPage.Effects>
+        <effects:ContentPageTitleFontEffect />
+    </ContentPage.Effects>
+
+    <AbsoluteLayout>
+        <!-- MAP -->
+        <!--baidu地图插件-->
+        <maps:MyBaiduMaps x:Name="map"
+                          AbsoluteLayout.LayoutFlags="All"
+                          AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" />
+
+        <ContentView BackgroundColor="{StaticResource BlueColor}"
+                     Margin="5,5,5,5"
+                     AbsoluteLayout.LayoutBounds="0,1,1,.11"
+                     AbsoluteLayout.LayoutFlags="All">
+            <ContentView.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="iOS"
+                        Value="false" />
+                    <On Platform="Android"
+                        Value="true" />
+                </OnPlatform>
+            </ContentView.IsVisible>
+            <Grid ColumnSpacing="0"
+                  x:Name="TaskList"
+                  RowSpacing="0"
+                  Margin="0"
+                  BackgroundColor="#7fadf7">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="5" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout x:Name="TrackLayout" Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Grid.Row="0"
+                             Grid.Column="0"
+                             HeightRequest="40"
+                             BackgroundColor="#7fadf7">
+                    <iconize:IconImage Margin="0,0,0,0"
+                                       x:Name="TrackBtnIcon"
+                                       HeightRequest="22"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Icon="fa-play"
+                                       IconColor="#ffffff"
+                                       WidthRequest="22">
+                        <iconize:IconImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TrackCommand}"
+                                                  CommandParameter="test" />
+                        </iconize:IconImage.GestureRecognizers>
+                    </iconize:IconImage>
+                    <StackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Center">
+                        <Label Text="开启"
+                               x:Name="TrackBtn"
+                               TextColor="#ffffff"
+                               FontSize="14">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TrackCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             HeightRequest="40"
+                             BackgroundColor="#7fadf7">
+                    <BoxView HeightRequest="40"
+                             WidthRequest="1"
+                             Margin="0,2,0,0"
+                             BackgroundColor="#ffffff"></BoxView>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="Center"
+                             Grid.Row="0"
+                             Grid.Column="2"
+                             HeightRequest="40"
+                             BackgroundColor="#7fadf7">
+                    <iconize:IconImage Margin="0,0,0,0"
+                                       HeightRequest="22"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="End"
+                                       Icon="fa-arrows-alt"
+                                       IconColor="#ffffff"
+                                       WidthRequest="22">
+                        <iconize:IconImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TimeLineCommand}"
+                                                  CommandParameter="test" />
+                        </iconize:IconImage.GestureRecognizers>
+                    </iconize:IconImage>
+                    <StackLayout VerticalOptions="Center"
+                                 HorizontalOptions="Start">
+                        <Label Text="线路"
+                               TextColor="#ffffff"
+                               FontSize="14">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TimeLineCommand}"
+                                                      CommandParameter="123" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ContentView>
+
+    </AbsoluteLayout>
+</ContentPage>

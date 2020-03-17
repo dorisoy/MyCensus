@@ -1,0 +1,18 @@
+﻿<MasterDetailPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:ctr="clr-namespace:MyCensus.Views;assembly=MyCensus"
+                   x:Class="MyCensus.Views.UserMainPage">
+    <MasterDetailPage.MasterBehavior>
+        <OnPlatform
+            x:TypeArguments="MasterBehavior"             
+            WinPhone="Popover"/>
+    </MasterDetailPage.MasterBehavior>
+    <MasterDetailPage.Master>
+        <ctr:MenuPage
+            BindingContext="{Binding MenuViewModel}"/>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage 
+            BackgroundColor="Transparent" />
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

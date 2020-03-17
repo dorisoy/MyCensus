@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyCensus"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:control="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             xmlns:behaviors="clr-namespace:MyCensus.Behaviors;assembly=MyCensus"
+             x:Class="MyCensus.Views.Tradition_Card_Page3"
+             Title="{Binding Title}"
+             BackgroundColor="#ffffff">
+    <ContentPage.Resources>
+        <!--<StyleSheet>
+            <![CDATA[
+            .inputentry {
+            border:1px #0094ff solid;
+            }
+            ]]>
+        </StyleSheet>-->
+        <ResourceDictionary>
+            <Style x:Key="inputStyle"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+            <Style x:Key="labelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout  VerticalOptions="FillAndExpand">
+
+        <StackLayout Padding="0,10,0,10"
+                     Margin="0"
+                     Spacing="0"
+                     VerticalOptions="Start"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="#2dc9d6">
+            <control:StepProgressBar x:Name="RestauranStepBar"
+                                     Margin="0,0,0,0"
+                                     StepCanTouch="false"
+                                     StepColor="#2399a5"
+                                     Steps="{Binding Steps}"
+                                     IsCircle="true"
+                                     StepSelected="{Binding Step}" />
+
+        </StackLayout>
+
+        <ScrollView Padding="5"
+                    Margin="0"
+                    VerticalOptions="Start"
+                    HorizontalOptions="Fill">
+    
+            <StackLayout  VerticalOptions="Start"
+                          Spacing="0"
+                          Padding="0">
+
+
+                <ListView x:Name="ContextDemoList"
+                          CachingStrategy="RecycleElement"
+                          ItemsSource="{Binding Products, Mode=OneWay}"
+                          behaviors:ItemTappedCommandListView.ItemTappedCommand="{Binding ItemSelectedCommand}"
+                          SelectionMode="Single"
+                          SeparatorColor="#eeeeee" 
+                          IsPullToRefreshEnabled="True"
+                          RefreshCommand="{Binding RefreshCommand}"
+                          IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                          VerticalOptions="FillAndExpand">
+                    <ListView.Header>
+                        <StackLayout BackgroundColor="#eeeeee">
+                            <iconize:IconButton FontSize="14"
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Start"
+                                                Command="{Binding Path=NewAddCmd}"
+                                                CommandParameter="0"
+                                                Text="fa-plus"
+                                                TextColor="#ffffff"
+                                                Margin="5"
+                                                BackgroundColor="#7fadf7"
+                                                HeightRequest="32"
+                                                WidthRequest="38" />
+                        </StackLayout>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid x:Name="Item">
+                                        <Grid.ColumnDefinitions>
+                                            <!--<ColumnDefinition />-->
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="38" />
+                                        </Grid.ColumnDefinitions>
+                                        <!--<Label Text="{Binding GuId}"
+                                               VerticalOptions="Center"></Label>-->
+                                        <Label Grid.Column="0"
+                                               Text="{Binding ProductName}"
+                                               VerticalOptions="Center"></Label>
+                                        <Label Grid.Column="1"
+                                               VerticalOptions="Center"
+                                               Text="{Binding ProductProvider}"></Label>
+                                        <Button Grid.Column="2"
+                                                BindingContext="{Binding Source={x:Reference ContextDemoList}, Path=BindingContext}"
+                                                Command="{Binding DelItemCmd}"
+                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                                Text="&#xf014;"
+                                                TextColor="#7fadf7"
+                                                BackgroundColor="#ffffff"
+                                                HeightRequest="32"
+                                                WidthRequest="38"
+                                                Margin="0,5,0,5"
+                                                FontFamily="fontawesome.ttf#FontAwesome"></Button>
+                                    </Grid>
+                                </ViewCell.View>
+
+
+                                <!--<StackLayout Orientation="Horizontal"
+                                             Margin="0"
+                                             x:Name="Item">
+                                    <Label Text="{Binding ProductName, StringFormat='{0},'}"
+                                           Margin="0,10,0,10"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="12">
+                                    </Label>
+                                    <Label Text="{Binding ProductProvider}"
+                                           Margin="10,10,0,10"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemTextStyle}"
+                                           FontSize="12">
+                                    </Label>
+
+                                    <iconize:IconButton FontSize="14"
+                                                        HorizontalOptions="EndAndExpand"
+                                                        BindingContext="{Binding Source={x:Reference ContextDemoList}, Path=BindingContext}"
+                                                        Command="{Binding DelItemCmd}"
+                                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"
+                                                        Text="fa-trash"
+                                                        TextColor="#ffffff"
+                                                        BackgroundColor="#7fadf7"
+                                                        HeightRequest="32"
+                                                        Margin="0,5,0,5"
+                                                        WidthRequest="38" />
+                                </StackLayout>-->
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                   
+                </ListView>
+               
+            </StackLayout>
+        </ScrollView>
+
+        <Button Text="完成"
+                x:Name="NextWF"
+                Command="{Binding ConfimWFCmd}"
+                BackgroundColor="#7fadf7"
+                TextColor="#ffffff"
+                VerticalOptions="EndAndExpand"
+                StyleClass="parmarybtn"
+                Margin="5"></Button>
+
+    </StackLayout>
+</ContentPage>

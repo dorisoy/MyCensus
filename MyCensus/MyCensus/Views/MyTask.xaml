@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize"
+             x:Class="MyCensus.Views.MyTask"
+             Title="{Binding Title}">
+
+    <StackLayout>
+
+        <!--<ListView x:Name="listView"
+                  ItemSelected="listView_ItemSelected"
+                  VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"
+                                     Margin="3">
+                            -->
+        <!--<Image Source="{Binding Image}"
+                                   WidthRequest="50" />-->
+        <!--
+
+                            <iconize:IconImage HeightRequest="32"
+                                               Icon="{Binding Icon}"
+                                               IconColor="#7fadf7"
+                                               WidthRequest="32" />
+                            
+                            <Label Text="{Binding Name}"
+                                   Margin="10"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="16" />
+
+                            <iconize:IconImage HorizontalOptions="EndAndExpand" HeightRequest="32"
+                                               Icon="fa-angle-right"
+                                               IconColor="#7fadf7"
+                                               WidthRequest="32" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
+
+        <!-- The Android version doesn't use buttons. Just to show you can also do this another way. -->
+        <ContentView Grid.Row="1"
+                     BackgroundColor="{StaticResource BlueColor}"
+                     Margin="5,5,5,0">
+            <ContentView.IsVisible>
+                <OnPlatform x:TypeArguments="x:Boolean">
+                    <On Platform="iOS"
+                        Value="false" />
+                    <On Platform="Android"
+                        Value="true" />
+                </OnPlatform>
+            </ContentView.IsVisible>
+            <Grid ColumnSpacing="1"
+                  x:Name="TaskList"
+                  RowSpacing="1"
+                  Margin="0"
+                  BackgroundColor="#e0e0e0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.Column="0"
+                             HeightRequest="70"
+                             BackgroundColor="White">
+                    <Image Source="icon_shoe.png"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CmdSelectedCommand}"
+                                                  CommandParameter="Tradition" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="传统终端"
+                               TextColor="#888888"
+                               FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                                      Command="{Binding CmdSelectedCommand}"
+                                                      CommandParameter="Tradition" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding TraditionSum}"
+                               TextColor="#555555"
+                               FontSize="14" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="0"
+                             Grid.Column="1"
+                             HeightRequest="70"
+                             BackgroundColor="White">
+                    <Image Source="icon_clipboard.png"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                                  Command="{Binding CmdSelectedCommand}"
+                                                  CommandParameter="Restaurant" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="餐饮终端"
+                               TextColor="#888888"
+                               FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                                      Command="{Binding CmdSelectedCommand}"
+                                                      CommandParameter="Restaurant" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding RestaurantSum}"
+                               TextColor="#555555"
+                               FontSize="14" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="1"
+                             Grid.Column="0"
+                             HeightRequest="70"
+                             BackgroundColor="White">
+                    <Image Source="icon_headphones.png"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                                  Command="{Binding CmdSelectedCommand}"
+                                                  CommandParameter="Kayechang" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="KA夜场"
+                               TextColor="#888888"
+                               FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                                      Command="{Binding CmdSelectedCommand}"
+                                                      CommandParameter="Kayechang" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding KayechangSum}"
+                               TextColor="#555555"
+                               FontSize="14" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             HeightRequest="70"
+                             BackgroundColor="White">
+                    <Image Source="icon_speaker.png"
+                           VerticalOptions="Center"
+                           Margin="10,0,0,0">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                                  Command="{Binding CmdSelectedCommand}"
+                                                  CommandParameter="Qudao" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <StackLayout VerticalOptions="Center">
+                        <Label Text="渠道调查"
+                               TextColor="#888888"
+                               FontSize="16">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                                      Command="{Binding CmdSelectedCommand}"
+                                                      CommandParameter="Qudao" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="{Binding QudaoSum}"
+                               TextColor="#555555"
+                               FontSize="14" />
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  Grid.Row="2"
+                              Grid.ColumnSpan="2"
+                              BackgroundColor="White">
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="Transparent"></BoxView>
+                </StackLayout>
+            </Grid>
+        </ContentView>
+
+    </StackLayout>
+</ContentPage>

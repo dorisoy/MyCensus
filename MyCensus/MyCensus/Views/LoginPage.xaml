@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:MyCensus.Controls;assembly=MyCensus"
+             xmlns:behaviors="clr-namespace:MyCensus.Behaviors;assembly=MyCensus"
+             xmlns:effects="clr-namespace:MyCensus.Effects;assembly=MyCensus"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="MyCensus.Views.LoginPage"
+             BackgroundColor="#2399a5"
+             BackgroundImage="bg_header_mdpi.png">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="primary">#7fadf7</Color>
+            <Style x:Key="inputStyle"
+                   TargetType="Entry">
+                <Setter Property="FontSize"
+                        Value="14" />
+            </Style>
+
+            <!--新增加样式-->
+
+            <Style x:Key="ForgotPwdLabelStyle"
+                   TargetType="{x:Type Label}"
+                   BasedOn="{StaticResource MontserratRegularLabelStyle}">
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LittleSize}" />
+                <Setter Property="Margin"
+                        Value="0, 5, 5, 15" />
+            </Style>
+
+            <Style x:Key="SignInButtonStyle"
+                   TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="HeightRequest"
+                        Value="40" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource LargeSize}" />
+            </Style>
+
+            <Style x:Key="HaveAccountLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MidMediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <Style x:Key="SignUpLabelStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="FontFamily"
+                        Value="{StaticResource MontserratRegular}" />
+                <Setter Property="FontSize"
+                        Value="{StaticResource MidMediumSize}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource BrightYellowColor}" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+            </Style>
+
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 Spacing="10"
+                 Padding="40,0,40,0"
+                 VerticalOptions="CenterAndExpand">
+        <Image Source="logo_white.png"
+               StyleClass="indexlogo"></Image>
+        <Label Text="v1.0.1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               TextColor="#ffffff" />
+
+        <controls:ImageEntry Margin="0"
+                             x:Name="EntryUserName"
+                             Text="{Binding UserName.Value, Mode=TwoWay}"
+                             AutomationId="username"
+                             Placeholder="员工号/手机号"
+                             PlaceholderColor="#2399a5"
+                             Image="user"
+                             ImageWidth="18"
+                             ImageHeight="18"
+                             ImageAlignment="Left"
+                             HeightRequest="40"
+                             TextColor="#2399a5"
+                             BorderColor="#2399a5"
+                             BackgroundColor="#2dc9d6"
+                             CornerRadius="0"
+                             FontSize="14"
+                             Opacity="0.8"
+                             HorizontalOptions="FillAndExpand">
+            <controls:ImageEntry.Style>
+                <OnPlatform x:TypeArguments="Style"
+                            iOS="{StaticResource EntryStyle}"
+                            Android="{StaticResource EntryStyle}"
+                            WinPhone="{StaticResource UwpEntryStyle}" />
+            </controls:ImageEntry.Style>
+            <controls:ImageEntry.Behaviors>
+                <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding UserName}" />
+                <behaviors:ValidateOnTextChangedBehavior ValidateCommand="{Binding ValidateCommand}" />
+            </controls:ImageEntry.Behaviors>
+            <controls:ImageEntry.Triggers>
+                <DataTrigger TargetType="controls:ImageEntry"
+                             Binding="{Binding UserName.IsValid}"
+                             Value="False">
+                    <Setter Property="effects:LineColorEffect.LineColor"
+                            Value="{StaticResource ErrorColor}" />
+                </DataTrigger>
+            </controls:ImageEntry.Triggers>
+        </controls:ImageEntry>
+
+        <controls:ImageEntry  Margin="0"
+                              x:Name="EntryPassword"
+                              Text="{Binding Password.Value, Mode=TwoWay}"
+                              Placeholder="密码"
+                              TextColor="#2399a5"
+                              PlaceholderColor="#2399a5"
+                              AutomationId="password"
+                              Image="password"
+                              IsPassword="True"
+                              ImageWidth="18"
+                              ImageHeight="18"
+                              ImageAlignment="Left"
+                              HeightRequest="40"
+                              BorderColor="#2399a5"
+                              BackgroundColor="#2dc9d6"
+                              CornerRadius="0"
+                              FontSize="14"
+                              Opacity="0.8"
+                              HorizontalOptions="FillAndExpand">
+            <controls:ImageEntry.Style>
+                <OnPlatform x:TypeArguments="Style"
+                            iOS="{StaticResource EntryStyle}"
+                            Android="{StaticResource EntryStyle}"
+                            WinPhone="{StaticResource UwpEntryStyle}" />
+            </controls:ImageEntry.Style>
+            <controls:ImageEntry.Behaviors>
+                <behaviors:TurnValidOnFocusBehavior ValidityObject="{Binding Password}" />
+                <behaviors:ValidateOnTextChangedBehavior ValidateCommand="{Binding ValidateCommand}" />
+            </controls:ImageEntry.Behaviors>
+            <controls:ImageEntry.Triggers>
+                <DataTrigger TargetType="controls:ImageEntry"
+                             Binding="{Binding Password.IsValid}"
+                             Value="False">
+                    <Setter Property="effects:LineColorEffect.LineColor"
+                            Value="{StaticResource ErrorColor}" />
+                </DataTrigger>
+            </controls:ImageEntry.Triggers>
+        </controls:ImageEntry>
+
+        <Button x:Name="SignInButton"
+                Command="{Binding Path=LoginCommand}"
+                Text="登录"
+                TextColor="#ffffff"
+                StyleClass="defaultbtn"
+                AutomationId="signin"
+                Style="{StaticResource SignInButtonStyle}">
+        </Button>
+
+        <Label Text="忘记密码?"
+               TextColor="#ffffff" />
+    </StackLayout>
+</ContentPage>

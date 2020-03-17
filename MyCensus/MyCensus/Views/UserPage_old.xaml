@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCensus.Views.UserPage_old"
+             Title="{Binding Title}">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="Man_with_mackbook96.png"></Image>
+            <Label Text="每天都是新的开始!"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <ListView x:Name="listView"
+                      ItemSelected="listView_ItemSelected"
+                      VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal"
+                                         Margin="3">
+                                <Image Source="{Binding Image}"
+                                       WidthRequest="50" />
+                                <Label Text="{Binding Name}"
+                                       Margin="10"
+                                       LineBreakMode="NoWrap"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       FontSize="16" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
