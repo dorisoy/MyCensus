@@ -1,6 +1,6 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+based on Xamarin.Forms Marketing survey app
 
 ### What is this repository for? ###
 
